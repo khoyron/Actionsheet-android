@@ -38,7 +38,7 @@ data.add("Move");
 data.add("Duplicate");
 
 new ActionSheet(MainActivityJava.this,data)
-                        .setTitle("Test")
+                        .setTitle("What do you want to do with the file")
                         .setCancelTitle("Cancle")
                         .setColorTitle(getResources().getColor(R.color.title))
                         .setColorTitleCancel(getResources().getColor(R.color.action))
@@ -67,8 +67,8 @@ data.add("English")
 data.add("Indonesia")
 
 ActionSheet(this,data)
-                   .setTitle("Test")
-                   .setCancelTitle("Deleted")
+                   .setTitle("Select Country")
+                   .setCancelTitle("Cancel")
                    .setColorTitleCancel(Color.parseColor("#FF4081"))
                    .setColorTitle(Color.parseColor("#FF4081"))
                    .setColorData(Color.parseColor("#FF4081"))
@@ -91,7 +91,7 @@ ActionSheet(this,data)
 ActionSheet actionSheet;
 
 actionSheet = new ActionSheet(MainActivityJava.this,data)
-                        .setTitle("Test")
+                        .setTitle("What do you want to do with the file")
                         .setCancelTitle("Cancle")
                         .setColorTitle(getResources().getColor(R.color.title))
                         .setColorTitleCancel(getResources().getColor(R.color.action))
