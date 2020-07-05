@@ -1,1 +1,1 @@
-include ':xample', ':actionsheetiosforandroid'
+include ':Actionsheet-android-sample', ':Actionsheets'

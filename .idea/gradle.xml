@@ -8,11 +8,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/actionsheetiosforandroid" />
-            <option value="$PROJECT_DIR$/xample" />
+            <option value="$PROJECT_DIR$/Actionsheet-android-sample" />
+            <option value="$PROJECT_DIR$/Actionsheets" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>
