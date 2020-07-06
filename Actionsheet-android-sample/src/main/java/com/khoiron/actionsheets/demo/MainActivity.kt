@@ -1,7 +1,6 @@
 package com.khoiron.actionsheets.demo
 
 import com.khoiron.actionsheets.callback.ActionSheetCallBack
-import android.actionsheet.demo.com.khoiron.demo.R
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle

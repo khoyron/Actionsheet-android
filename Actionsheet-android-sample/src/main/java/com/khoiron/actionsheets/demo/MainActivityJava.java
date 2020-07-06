@@ -2,7 +2,6 @@ package com.khoiron.actionsheets.demo;
 
 import com.khoiron.actionsheets.ActionSheet;
 import com.khoiron.actionsheets.callback.ActionSheetCallBack;
-import android.actionsheet.demo.com.khoiron.demo.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
