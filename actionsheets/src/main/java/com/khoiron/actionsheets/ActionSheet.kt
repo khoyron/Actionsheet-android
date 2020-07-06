@@ -1,8 +1,7 @@
-package android.actionsheet.demo.com.khoiron.actionsheet
+package com.khoiron.actionsheets
 
-import android.actionsheet.demo.com.khoiron.actionsheet.ActionSheet.mData.titleDisable
-import android.actionsheet.demo.com.khoiron.actionsheet.Interface.ActionSheetCallBack
-import android.actionsheet.demo.com.khoiron.actionsheet.Interface.onclikListener
+import com.khoiron.actionsheets.ActionSheet.mData.titleDisable
+import com.khoiron.actionsheets.`interface`.OnClickListener
 import android.support.v7.widget.LinearLayoutManager
 import android.graphics.drawable.ColorDrawable
 import android.support.v7.widget.RecyclerView
@@ -17,6 +16,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
+import com.khoiron.actionsheets.callback.ActionSheetCallBack
 import java.util.*
 
 /**
@@ -27,14 +27,14 @@ class ActionSheet {
 
     lateinit var context :Context
     var data : MutableList<String> = ArrayList<String>()
-    val actionSheet by lazy { ActionSheet(context,data) }
+    val actionSheet by lazy { ActionSheet(context, data) }
 
     var alertDialog: AlertDialog? = null
     lateinit var title : TextView
     lateinit var cancle : TextView
     lateinit var myRecyclerView: RecyclerView
     lateinit var line_title : LinearLayout
-    val RecyclerviewAdapter by lazy { RecyclerviewAdapter(data,context) }
+    val RecyclerviewAdapter by lazy { RecyclerviewAdapter(data, context) }
 
     constructor(context: Context,data :MutableList<String>)  {
         this.context = context
@@ -46,7 +46,7 @@ class ActionSheet {
         return actionSheet
     }
 
-    fun hideTitle():ActionSheet{
+    fun hideTitle(): ActionSheet {
         titleDisable = true
         return actionSheet
     }
@@ -79,32 +79,32 @@ class ActionSheet {
 
     // add new fitur
 
-    fun setFontTitle(fontTitle: Int): ActionSheet{
+    fun setFontTitle(fontTitle: Int): ActionSheet {
         mData.fontTitle = fontTitle
         return actionSheet
     }
 
-    fun setSizeTextTitle(sizeTitle:Float): ActionSheet{
-        mData.sizeTextTitle  = sizeTitle
+    fun setSizeTextTitle(sizeTitle:Float): ActionSheet {
+        mData.sizeTextTitle = sizeTitle
         return actionSheet
     }
 
-    fun setFontCancelTitle(fontCancle: Int): ActionSheet{
+    fun setFontCancelTitle(fontCancle: Int): ActionSheet {
         mData.fontCancel = fontCancle
         return actionSheet
     }
 
-    fun setSizeTextCancel(sizeCancel:Float): ActionSheet{
+    fun setSizeTextCancel(sizeCancel:Float): ActionSheet {
         mData.sizeTextCancel = sizeCancel
         return actionSheet
     }
 
-    fun setFontData(fontData: Int): ActionSheet{
-        mData.fontData   = fontData
+    fun setFontData(fontData: Int): ActionSheet {
+        mData.fontData = fontData
         return actionSheet
     }
 
-    fun setSizeTextData(sizeTextData:Float): ActionSheet{
+    fun setSizeTextData(sizeTextData:Float): ActionSheet {
         mData.sizeTextData = sizeTextData
         return actionSheet
     }
@@ -132,7 +132,7 @@ class ActionSheet {
         alertDialog?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         alertDialog?.show()
 
-        RecyclerviewAdapter.onclikCallback(object : onclikListener {
+        RecyclerviewAdapter.onclikCallback(object : OnClickListener {
             override fun onclik(string: String, position: Int) {
                 alertDialog?.dismiss()
                 actionSheetCallBack.data(string,position)
@@ -147,7 +147,7 @@ class ActionSheet {
     }
 
     private fun setFontAndSizeText() {
-        if (mData.fontTitle!=0){
+        if (mData.fontTitle !=0){
             try {
                 val typefaceTitle = ResourcesCompat.getFont(context, mData.fontTitle)
                 title.setTypeface(typefaceTitle)
@@ -157,7 +157,7 @@ class ActionSheet {
             }
         }
 
-        if (mData.fontCancel!=0){
+        if (mData.fontCancel !=0){
             try {
                 val typefaceCancel = ResourcesCompat.getFont(context, mData.fontCancel)
                 cancle.setTypeface(typefaceCancel)
@@ -166,11 +166,11 @@ class ActionSheet {
             }
         }
 
-        if (mData.sizeTextTitle!=0f){
-            title.setTextSize(TypedValue.COMPLEX_UNIT_SP,mData.sizeTextTitle)
+        if (mData.sizeTextTitle !=0f){
+            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, mData.sizeTextTitle)
         }
-        if (mData.sizeTextCancel!=0f){
-            cancle.setTextSize(TypedValue.COMPLEX_UNIT_SP,mData.sizeTextCancel)
+        if (mData.sizeTextCancel !=0f){
+            cancle.setTextSize(TypedValue.COMPLEX_UNIT_SP, mData.sizeTextCancel)
         }
     }
 

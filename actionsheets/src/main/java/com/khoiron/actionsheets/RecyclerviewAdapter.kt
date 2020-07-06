@@ -1,6 +1,6 @@
-package android.actionsheet.demo.com.khoiron.actionsheet
+package com.khoiron.actionsheets
 
-import android.actionsheet.demo.com.khoiron.actionsheet.Interface.onclikListener
+import com.khoiron.actionsheets.`interface`.OnClickListener
 import android.content.Context
 import android.graphics.Color
 import android.os.Handler
@@ -19,7 +19,7 @@ import android.widget.TextView
  */
 class RecyclerviewAdapter( var data: MutableList<String>,var context: Context): RecyclerView.Adapter<RecyclerviewAdapter.MyViewHolder>() {
 
-    lateinit var onclik :onclikListener
+    lateinit var onclik : OnClickListener
 
     var color       = Color.parseColor("#5EA1D6")
     var colorSelect = Color.parseColor("#FAFF1E1E")
@@ -74,7 +74,7 @@ class RecyclerviewAdapter( var data: MutableList<String>,var context: Context): 
         val linebottom = v.findViewById(R.id.linebottom) as LinearLayout
     }
 
-    fun onclikCallback(onclikListener: onclikListener){
+    fun onclikCallback(onclikListener: OnClickListener){
         this.onclik =  onclikListener
     }
 

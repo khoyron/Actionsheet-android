@@ -1,11 +1,12 @@
-package android.actionsheet.demo.com.khoiron.demo
+package com.khoiron.actionsheets.demo
 
-import android.actionsheet.demo.com.khoiron.actionsheet.ActionSheet
-import android.actionsheet.demo.com.khoiron.actionsheet.Interface.ActionSheetCallBack
+import com.khoiron.actionsheets.callback.ActionSheetCallBack
+import android.actionsheet.demo.com.khoiron.demo.R
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.khoiron.actionsheets.ActionSheet
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         testbtn.setOnClickListener {
 
-           ActionSheet(this,data)
+           ActionSheet(this, data)
                    .setTitle("What do you want to do with the file")
                    .setCancelTitle("Deleted")
                    .setColorTitleCancel(Color.parseColor("#FF4081"))
@@ -34,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 //                   .setSizeTextCancel(30f)
 //                   .setSizeTextData(30f)
 //                   .setSizeTextTitle(30f)
-                   .create(object :ActionSheetCallBack{
+                   .create(object : ActionSheetCallBack {
                        override fun data(data: String, position: Int) {
                            if ("English".equals(data)){
                                // your action
