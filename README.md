@@ -104,6 +104,19 @@ actionSheet.create(new ActionSheetCallBack() {
                     }
                 });
 ```
+## update fitur
+
+Function      				   | description
+-------------------------------------------| -------------
+.hideTitle()  			           | hiden for title
+.setFontData(R.font.meryana_script)        | change font data
+.setFontCancelTitle(R.font.meryana_script) | change font cancel
+.setFontTitle(R.font.meryana_script)       | change font title
+.setSizeTextCancel(30)			   | change size text cancel
+.setSizeTextData(30)		           | change size text data
+.setSizeTextTitle(30)		 	   | change size text title
+
+
 
 License
 =======
