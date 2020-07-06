@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="android.actionsheet.demo.com.khoiron.demo.MainActivity">
+    tools:context="android.actionsheet.demo.com.khoiron.demo.android.actionsheet.demo.com.MainActivity">
 
     <Button
         android:id="@+id/testbtn"

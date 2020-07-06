@@ -1,7 +1,8 @@
-package android.actionsheet.demo.com.khoiron.demo;
+package com.khoiron.actionsheets.demo;
 
-import android.actionsheet.demo.com.khoiron.actionsheet.ActionSheet;
-import android.actionsheet.demo.com.khoiron.actionsheet.Interface.ActionSheetCallBack;
+import com.khoiron.actionsheets.ActionSheet;
+import com.khoiron.actionsheets.callback.ActionSheetCallBack;
+import android.actionsheet.demo.com.khoiron.demo.R;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class MainActivityJava extends AppCompatActivity {
             public void onClick(View view) {
                 new ActionSheet(MainActivityJava.this,data)
                         .setTitle("What do you want to do with the file")
-                        .setCancelTitle("Cancle")
+                        .setCancelTitle("Cancel")
                         .setColorTitle(getResources().getColor(R.color.title))
 //                        .hideTitle()
 //                        .setFontData(R.font.meryana_script)
@@ -40,7 +41,7 @@ public class MainActivityJava extends AppCompatActivity {
 //                        .setFontTitle(R.font.meryana_script)
 //                        .setSizeTextCancel(30)
 //                        .setSizeTextData(30)
-//                        .s,etSizeTextTitle(30)
+//                        .setSizeTextTitle(30)
                         .setColorTitleCancel(getResources().getColor(R.color.action))
                         .setColorData(getResources().getColor(R.color.action))
                         .setColorSelected(getResources().getColor(R.color.colorAccent))
