@@ -1,10 +1,10 @@
+apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.mkhoiron'
+group='com.github.inibukanadit'
 
 android {
     compileSdkVersion 27
