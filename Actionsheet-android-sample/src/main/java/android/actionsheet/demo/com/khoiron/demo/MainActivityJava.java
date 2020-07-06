@@ -40,7 +40,7 @@ public class MainActivityJava extends AppCompatActivity {
 //                        .setFontTitle(R.font.meryana_script)
 //                        .setSizeTextCancel(30)
 //                        .setSizeTextData(30)
-//                        .setSizeTextTitle(30)
+//                        .s,etSizeTextTitle(30)
                         .setColorTitleCancel(getResources().getColor(R.color.action))
                         .setColorData(getResources().getColor(R.color.action))
                         .setColorSelected(getResources().getColor(R.color.colorAccent))
