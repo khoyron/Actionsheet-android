@@ -27,6 +27,13 @@ class MainActivity : AppCompatActivity() {
                    .setColorTitleCancel(Color.parseColor("#FF4081"))
                    .setColorTitle(Color.parseColor("#FF4081"))
                    .setColorData(Color.parseColor("#FF4081"))
+//                   .hideTitle()
+//                   .setFontData(R.font.meryana_script)
+//                   .setFontCancelTitle(R.font.meryana_script)
+//                   .setFontTitle(R.font.meryana_script)
+//                   .setSizeTextCancel(30f)
+//                   .setSizeTextData(30f)
+//                   .setSizeTextTitle(30f)
                    .create(object :ActionSheetCallBack{
                        override fun data(data: String, position: Int) {
                            if ("English".equals(data)){

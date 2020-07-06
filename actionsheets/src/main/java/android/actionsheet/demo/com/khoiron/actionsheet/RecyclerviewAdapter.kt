@@ -31,7 +31,6 @@ class RecyclerviewAdapter( var data: MutableList<String>,var context: Context): 
                 .inflate(R.layout.recyclerview_layout, parent, false)
 
         return MyViewHolder(itemView)
-//        return  MyViewHolder(RecyclerviewAdapterUi().createView(AnkoContext.create(parent!!.context, parent)))
     }
 
     override fun getItemCount(): Int {
