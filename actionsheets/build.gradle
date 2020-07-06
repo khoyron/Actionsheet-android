@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.github.dcendents.android-maven'
 
+group='com.github.mkhoiron'
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -28,9 +30,9 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     //noinspection GradleCompatible
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+//    testImplementation 'junit:junit:4.12'
+//    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+//    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
