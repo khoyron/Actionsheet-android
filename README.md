@@ -120,7 +120,7 @@ Function      				   | description
 
 License
 =======
-Copyright 2018 [M Khoiron](https://id.linkedin.com/in/khoiron)
+Copyright 2018 [M Khoiron](https://linkedin.com/in/khoiron)
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
