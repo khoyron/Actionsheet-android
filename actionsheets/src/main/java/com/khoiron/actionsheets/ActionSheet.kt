@@ -1,23 +1,24 @@
 package com.khoiron.actionsheets
 
-import com.khoiron.actionsheets.ActionSheet.mData.titleDisable
-import com.khoiron.actionsheets.`interface`.OnClickListener
-import android.support.v7.widget.LinearLayoutManager
-import android.graphics.drawable.ColorDrawable
-import android.support.v7.widget.RecyclerView
-import android.widget.LinearLayout
-import android.view.LayoutInflater
-import android.widget.TextView
 import android.app.AlertDialog
 import android.content.Context
 import android.graphics.Color
-import android.support.v4.content.res.ResourcesCompat
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.GradientDrawable
 import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.View
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.khoiron.actionsheets.callback.ActionSheetCallBack
+import com.khoiron.actionsheets.callback.OnClickListener
 import java.util.*
+
 
 /**
  * Created by khoiron on 01/06/18.
@@ -25,181 +26,198 @@ import java.util.*
 
 class ActionSheet {
 
-    lateinit var context :Context
-    var data : MutableList<String> = ArrayList<String>()
-    val actionSheet by lazy { ActionSheet(context, data) }
+    private lateinit var context: Context
+    private var data: MutableList<String> = ArrayList()
+    private val actionSheet by lazy { ActionSheet(context, data) }
 
-    var alertDialog: AlertDialog? = null
-    lateinit var title : TextView
-    lateinit var cancle : TextView
-    lateinit var myRecyclerView: RecyclerView
-    lateinit var line_title : LinearLayout
-    val RecyclerviewAdapter by lazy { RecyclerviewAdapter(data, context) }
+    private var alertDialog: AlertDialog? = null
+    private lateinit var title: AppCompatTextView
+    private lateinit var cancel: AppCompatTextView
+    private lateinit var myRecyclerView: RecyclerView
+    private lateinit var lineTitle: LinearLayoutCompat
+    private lateinit var lineContent: LinearLayoutCompat
+    private lateinit var lineCancel: LinearLayoutCompat
+    private val recyclerviewAdapter by lazy { RecyclerviewAdapter(data, context) }
 
-    constructor(context: Context,data :MutableList<String>)  {
+    constructor(context: Context, data: MutableList<String>) {
         this.context = context
         this.data = data
     }
 
     fun setColorTitle(title: Int): ActionSheet {
-        mData.colorTitle = title
+        ActionSheetData.colorTitle = title
         return actionSheet
     }
 
     fun hideTitle(): ActionSheet {
-        titleDisable = true
+        ActionSheetData.titleDisable = true
         return actionSheet
     }
 
-
-    fun setColorTitleCancel(title: Int): ActionSheet {
-        mData.colorCancle = title
+    fun setColorTitleCancel(colorCancel: Int): ActionSheet {
+        ActionSheetData.colorCancel = colorCancel
         return actionSheet
     }
 
-    fun setColorData(title: Int): ActionSheet {
-        mData.colorData = title
+    fun setColorBackground(colorBackground: Int): ActionSheet {
+        ActionSheetData.colorBackground = colorBackground
         return actionSheet
     }
 
-    fun setColorSelected(title: Int): ActionSheet {
-        mData.colorSelect = title
+    fun setColorData(colorData: Int): ActionSheet {
+        ActionSheetData.colorData = colorData
+        return actionSheet
+    }
+
+    fun setColorSelected(colorSelect: Int): ActionSheet {
+        ActionSheetData.colorSelect = colorSelect
         return actionSheet
     }
 
     fun setTitle(title: String): ActionSheet {
-        mData.title = title
+        ActionSheetData.title = title
         return actionSheet
     }
 
-    fun setCancelTitle(title: String): ActionSheet {
-        mData.titleCancel = title
+    fun setCancelTitle(titleCancel: String): ActionSheet {
+        ActionSheetData.titleCancel = titleCancel
         return actionSheet
     }
 
-    // add new fitur
+    // add new feature
 
     fun setFontTitle(fontTitle: Int): ActionSheet {
-        mData.fontTitle = fontTitle
+        ActionSheetData.fontTitle = fontTitle
         return actionSheet
     }
 
-    fun setSizeTextTitle(sizeTitle:Float): ActionSheet {
-        mData.sizeTextTitle = sizeTitle
+    fun setSizeTextTitle(sizeTitle: Float): ActionSheet {
+        ActionSheetData.sizeTextTitle = sizeTitle
         return actionSheet
     }
 
-    fun setFontCancelTitle(fontCancle: Int): ActionSheet {
-        mData.fontCancel = fontCancle
+    fun setFontCancelTitle(fontCancel: Int): ActionSheet {
+        ActionSheetData.fontCancel = fontCancel
         return actionSheet
     }
 
-    fun setSizeTextCancel(sizeCancel:Float): ActionSheet {
-        mData.sizeTextCancel = sizeCancel
+    fun setSizeTextCancel(sizeCancel: Float): ActionSheet {
+        ActionSheetData.sizeTextCancel = sizeCancel
         return actionSheet
     }
 
     fun setFontData(fontData: Int): ActionSheet {
-        mData.fontData = fontData
+        ActionSheetData.fontData = fontData
         return actionSheet
     }
 
-    fun setSizeTextData(sizeTextData:Float): ActionSheet {
-        mData.sizeTextData = sizeTextData
+    fun setSizeTextData(sizeTextData: Float): ActionSheet {
+        ActionSheetData.sizeTextData = sizeTextData
         return actionSheet
     }
 
-    fun create( actionSheetCallBack: ActionSheetCallBack){
-        val adb     = AlertDialog.Builder(context)
-        val v       = LayoutInflater.from(context).inflate(R.layout.action_sheet,null)
-        title       = v.findViewById(R.id.tvTitle)
-        cancle      = v.findViewById(R.id.tvCancelAction)
-        line_title  = v.findViewById(R.id.line_title)
+    fun create(actionSheetCallBack: ActionSheetCallBack) {
+        val adb = AlertDialog.Builder(context)
+        val v = LayoutInflater.from(context).inflate(R.layout.action_sheet, null)
+
+        title = v.findViewById(R.id.tvTitle)
+        cancel = v.findViewById(R.id.tvCancelAction)
+        lineTitle = v.findViewById(R.id.line_title)
+        lineContent = v.findViewById(R.id.line_content)
+        lineCancel = v.findViewById(R.id.line_cancel)
 
         setData()
         setFontAndSizeText()
 
         myRecyclerView = v.findViewById(R.id.myRecyclerview)
-        myRecyclerView.setLayoutManager(LinearLayoutManager(context))
-        myRecyclerView.setAdapter(RecyclerviewAdapter)
-        RecyclerviewAdapter.notifyDataSetChanged()
+        myRecyclerView.layoutManager = LinearLayoutManager(context)
+        myRecyclerView.adapter = recyclerviewAdapter
+        recyclerviewAdapter.notifyDataSetChanged()
 
         adb.setView(v)
         alertDialog = adb.create()
-        alertDialog?.getWindow()?.getAttributes()?.windowAnimations = R.style.DialogAnimations_SmileWindow;//R.style.DialogAnimations_SmileWindow;
+        alertDialog?.window?.attributes?.windowAnimations = R.style.DialogAnimations_SmileWindow
         alertDialog?.setCancelable(false)
-        alertDialog?.getWindow()?.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)
-        alertDialog?.getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+        alertDialog?.window?.setGravity(Gravity.CENTER_HORIZONTAL or Gravity.BOTTOM)
+        alertDialog?.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         alertDialog?.show()
 
-        RecyclerviewAdapter.onclikCallback(object : OnClickListener {
-            override fun onclik(string: String, position: Int) {
+        recyclerviewAdapter.onclickCallback(object : OnClickListener {
+            override fun onclick(string: String, position: Int) {
                 alertDialog?.dismiss()
-                actionSheetCallBack.data(string,position)
+                actionSheetCallBack.data(string, position)
             }
         })
 
-        cancle.setOnClickListener { alertDialog?.dismiss() }
+        cancel.setOnClickListener { alertDialog?.dismiss() }
 
-        if (titleDisable){
-            line_title.visibility = View.GONE
+        if (ActionSheetData.titleDisable) {
+            lineTitle.visibility = View.GONE
         }
     }
 
     private fun setFontAndSizeText() {
-        if (mData.fontTitle !=0){
+        if (ActionSheetData.fontTitle != 0) {
             try {
-                val typefaceTitle = ResourcesCompat.getFont(context, mData.fontTitle)
-                title.setTypeface(typefaceTitle)
-            }
-            catch (e:Exception){
-                Log.e("Error",e.message)
+                val typefaceTitle = ResourcesCompat.getFont(context, ActionSheetData.fontTitle)
+                title.typeface = typefaceTitle
+            } catch (e: Exception) {
+                e.message?.let { Log.e("Error", it) }
             }
         }
 
-        if (mData.fontCancel !=0){
+        if (ActionSheetData.fontCancel != 0) {
             try {
-                val typefaceCancel = ResourcesCompat.getFont(context, mData.fontCancel)
-                cancle.setTypeface(typefaceCancel)
-            }catch (e:Exception){
-                Log.e("Error",e.message)
+                val typefaceCancel = ResourcesCompat.getFont(context, ActionSheetData.fontCancel)
+                cancel.typeface = typefaceCancel
+            } catch (e: Exception) {
+                e.message?.let { Log.e("Error", it) }
             }
         }
 
-        if (mData.sizeTextTitle !=0f){
-            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, mData.sizeTextTitle)
+        if (ActionSheetData.sizeTextTitle != 0f) {
+            title.setTextSize(TypedValue.COMPLEX_UNIT_SP, ActionSheetData.sizeTextTitle)
         }
-        if (mData.sizeTextCancel !=0f){
-            cancle.setTextSize(TypedValue.COMPLEX_UNIT_SP, mData.sizeTextCancel)
+        if (ActionSheetData.sizeTextCancel != 0f) {
+            cancel.setTextSize(TypedValue.COMPLEX_UNIT_SP, ActionSheetData.sizeTextCancel)
         }
     }
 
 
     private fun setData() {
-        title.text                      = mData.title
-        cancle.text                     = mData.titleCancel
-        title.setTextColor(mData.colorTitle)
-        cancle.setTextColor(mData.colorCancle)
-        RecyclerviewAdapter.color       = mData.colorData
-        RecyclerviewAdapter.colorSelect = mData.colorSelect
-        RecyclerviewAdapter.fontText    = mData.fontData
-        RecyclerviewAdapter.sizeText    = mData.sizeTextData
+        title.text = ActionSheetData.title
+        cancel.text = ActionSheetData.titleCancel
+        title.setTextColor(ActionSheetData.colorTitle)
+        cancel.setTextColor(ActionSheetData.colorCancel)
+        recyclerviewAdapter.color = ActionSheetData.colorData
+        recyclerviewAdapter.colorSelect = ActionSheetData.colorSelect
+        recyclerviewAdapter.fontText = ActionSheetData.fontData
+        recyclerviewAdapter.sizeText = ActionSheetData.sizeTextData
+        // Set background color
+        val drawableContent: GradientDrawable = lineContent.background as GradientDrawable
+        drawableContent.setStroke(3, ActionSheetData.colorBackground)
+        drawableContent.setColor(ActionSheetData.colorBackground)
+        lineContent.background = drawableContent
+        val drawableCancel: GradientDrawable = lineCancel.background as GradientDrawable
+        drawableCancel.setStroke(3, ActionSheetData.colorBackground)
+        drawableCancel.setColor(ActionSheetData.colorBackground)
+        lineCancel.background = drawableCancel
     }
 
-    object mData{
-        var title          = ""
-        var titleCancel    = ""
-        var colorData  = Color.parseColor("#5EA1D6")
-        var colorCancle= Color.parseColor("#5EA1D6")
-        var colorTitle = Color.parseColor("#afafaf")
-        var colorSelect= Color.parseColor("#FAFF1E1E")
-        var titleDisable   = false
-        var fontTitle      = 0
-        var fontData       = 0
-        var fontCancel     = 0
-        var sizeTextTitle  = 0f
+    object ActionSheetData {
+        var title = ""
+        var titleCancel = ""
+        var colorBackground = Color.parseColor("#FFFFFF")
+        var colorData = Color.parseColor("#5EA1D6")
+        var colorCancel = Color.parseColor("#5EA1D6")
+        var colorTitle = Color.parseColor("#AFAFAF")
+        var colorSelect = Color.parseColor("#FAFF1E1E")
+        var titleDisable = false
+        var fontTitle = 0
+        var fontData = 0
+        var fontCancel = 0
+        var sizeTextTitle = 0f
         var sizeTextCancel = 0f
-        var sizeTextData   = 0f
+        var sizeTextData = 0f
     }
-
 }

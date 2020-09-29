@@ -1,61 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    android:minWidth="500dp"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#00ffffff"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:minWidth="500dp"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/line_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@drawable/dialogbgrounded">
-        <LinearLayout
-            android:orientation="vertical"
+        android:background="@drawable/dialog_bg_rounded"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/line_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/line_title">
-            <TextView
-                android:textColor="#707070"
-                android:layout_margin="15dp"
-                android:textSize="16sp"
-                android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:gravity="center"
+                android:textColor="#707070"
+                android:textSize="16sp" />
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:id="@+id/linebottom"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/line_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="#EBEBEB"/>
-        </LinearLayout>
+                android:background="#EBEBEB"
+                android:orientation="vertical" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
-        <android.support.v7.widget.RecyclerView
-            android:background="#00ffffff"
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/myRecyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"></android.support.v7.widget.RecyclerView>
+            android:layout_marginBottom="5dp"
+            android:background="#00ffffff" />
 
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
-    <LinearLayout
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/dialogbgrounded"
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/line_cancel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/dialog_bg_rounded"
         android:orientation="vertical">
-        <TextView
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvCancelAction"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:text="Cancel"
-            android:textSize="22dp"
             android:gravity="center"
-            android:textColor="#5EA1D6"/>
-    </LinearLayout>
-</LinearLayout>
+            android:text="@string/cancel"
+            android:textColor="#5EA1D6"
+            android:textSize="22sp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

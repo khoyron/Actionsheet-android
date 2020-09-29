@@ -1,8 +1,9 @@
-package com.khoiron.actionsheets.`interface`
+package com.khoiron.actionsheets.callback
 
 /**
  * Created by khoiron on 02/06/18.
  */
+
 interface OnClickListener {
-    fun onclik(string: String,position: Int)
+    fun onclick(string: String, position: Int)
 }

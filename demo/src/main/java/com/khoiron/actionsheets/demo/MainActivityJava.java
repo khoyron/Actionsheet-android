@@ -1,15 +1,12 @@
 package com.khoiron.actionsheets.demo;
 
 import com.khoiron.actionsheets.ActionSheet;
-import com.khoiron.actionsheets.callback.ActionSheetCallBack;
-import com.khoiron.actionsheets.demo.R;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 
-import org.jetbrains.annotations.NotNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -28,13 +25,11 @@ public class MainActivityJava extends AppCompatActivity {
         data.add("Duplicate");
 
         Button button = findViewById(R.id.testbtn);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new ActionSheet(MainActivityJava.this,data)
-                        .setTitle("What do you want to do with the file")
-                        .setCancelTitle("Cancel")
-                        .setColorTitle(getResources().getColor(R.color.title))
+        button.setOnClickListener(view -> new ActionSheet(MainActivityJava.this, data)
+                .setTitle("What do you want to do with the file")
+                .setCancelTitle("Cancel")
+                .setColorTitle(getResources().getColor(R.color.title))
+                .setColorBackground(getResources().getColor(R.color.background))
 //                        .hideTitle()
 //                        .setFontData(R.font.meryana_script)
 //                        .setFontCancelTitle(R.font.meryana_script)
@@ -42,30 +37,25 @@ public class MainActivityJava extends AppCompatActivity {
 //                        .setSizeTextCancel(30)
 //                        .setSizeTextData(30)
 //                        .setSizeTextTitle(30)
-                        .setColorTitleCancel(getResources().getColor(R.color.action))
-                        .setColorData(getResources().getColor(R.color.action))
-                        .setColorSelected(getResources().getColor(R.color.colorAccent))
-                        .create(new ActionSheetCallBack() {
-                            @Override
-                            public void data(@NotNull String data, int position) {
-                                switch (position){
-                                    case 0:
-                                        // your action
-                                        setLog(data);
-                                    case 1:
-                                        // your action
-                                    case 2:
-                                        // your action
-                                    case 3:
-                                        // your action
-                                }
-                            }
-                        });
-            }
-        });
+                .setColorTitleCancel(getResources().getColor(R.color.action))
+                .setColorData(getResources().getColor(R.color.action))
+                .setColorSelected(getResources().getColor(R.color.colorAccent))
+                .create((data, position) -> {
+                    switch (position) {
+                        case 0:
+                            // your action
+                            setLog(data);
+                        case 1:
+                            // your action
+                        case 2:
+                            // your action
+                        case 3:
+                            // your action
+                    }
+                }));
     }
 
     private void setLog(String s) {
-        Log.e("Tag",s);
+        Log.e("Tag", s);
     }
 }
