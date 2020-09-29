@@ -44,8 +44,8 @@ class ActionSheet {
         this.data = data
     }
 
-    fun setColorTitle(title: Int): ActionSheet {
-        ActionSheetData.colorTitle = title
+    fun setColorTitle(colorTitle: Int): ActionSheet {
+        ActionSheetData.colorTitle = colorTitle
         return actionSheet
     }
 
