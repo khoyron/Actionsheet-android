@@ -1,9 +1,9 @@
 # Actionsheet-android
 
-[![API](https://img.shields.io/badge/API-14%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=14)
-[![](https://jitpack.io/v/mkhoiron/Actionsheet-android.svg)](https://jitpack.io/#mkhoiron/Actionsheet-android/0.1)
+[![API](https://img.shields.io/badge/API-16%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=16)
+[![](https://jitpack.io/v/dualbit/Actionsheet-android.svg)](https://jitpack.io/#dualbit/Actionsheet-android/4)
 
-Actionshet-android is an Android Library to build Actionshet like iOS UIActionSheet component, iOS7 style, custom color etc
+Actionsheet-android is an Android Library to build Actionsheet like iOS UIActionSheet component, iOS7 style, custom color etc
 
 ![alt text](https://image.ibb.co/bzgpFy/mm_min.png)
 ![alt text](https://www.appcoda.com/wp-content/uploads/2014/05/t11_1_normal_action_sheet.jpg)
@@ -23,7 +23,7 @@ allprojects {
  
 ```gradle
 dependencies {
-	implementation 'com.github.mkhoiron:Actionsheet-android:3'
+	implementation 'com.github.DualBit:Actionsheet-android:4'
 }
 ```
 
@@ -39,7 +39,7 @@ data.add("Duplicate");
 
 new ActionSheet(MainActivityJava.this,data)
                         .setTitle("What do you want to do with the file")
-                        .setCancelTitle("Cancle")
+                        .setCancelTitle("Cancel")
                         .setColorTitle(getResources().getColor(R.color.title))
                         .setColorTitleCancel(getResources().getColor(R.color.action))
                         .setColorData(getResources().getColor(R.color.action))
@@ -66,7 +66,7 @@ val data by lazy { ArrayList<String>() }
 data.add("English")
 data.add("Indonesia")
 
-ActionSheet(this,data)
+ActionSheet(this, data)
                    .setTitle("Select Country")
                    .setCancelTitle("Cancel")
                    .setColorTitleCancel(Color.parseColor("#FF4081"))
@@ -90,9 +90,9 @@ ActionSheet(this,data)
 ```java
 ActionSheet actionSheet;
 
-actionSheet = new ActionSheet(MainActivityJava.this,data)
+actionSheet = new ActionSheet(MainActivityJava.this, data)
                         .setTitle("What do you want to do with the file")
-                        .setCancelTitle("Cancle")
+                        .setCancelTitle("Cancel")
                         .setColorTitle(getResources().getColor(R.color.title))
                         .setColorTitleCancel(getResources().getColor(R.color.action))
                         .setColorData(getResources().getColor(R.color.action));
@@ -104,11 +104,11 @@ actionSheet.create(new ActionSheetCallBack() {
                     }
                 });
 ```
-## update fitur
+## update feature
 
 Function      				   | description
 -------------------------------------------| -------------
-.hideTitle()  			           | hiden for title
+.hideTitle()  			           | hide title
 .setFontData(R.font.meryana_script)        | change font data
 .setFontCancelTitle(R.font.meryana_script) | change font cancel
 .setFontTitle(R.font.meryana_script)       | change font title
