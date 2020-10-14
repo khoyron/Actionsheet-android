@@ -1,33 +1,35 @@
 package com.khoiron.actionsheets
 
-import com.khoiron.actionsheets.`interface`.OnClickListener
+import com.khoiron.actionsheets.callback.OnClickListener
 import android.content.Context
 import android.graphics.Color
 import android.os.Handler
-import android.support.v4.content.res.ResourcesCompat
-import android.support.v7.widget.RecyclerView
+import android.os.Looper
 import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.recyclerview.widget.RecyclerView
 
 /**
  * Created by khoiron on 01/06/18.
  */
-class RecyclerviewAdapter( var data: MutableList<String>,var context: Context): RecyclerView.Adapter<RecyclerviewAdapter.MyViewHolder>() {
 
-    lateinit var onclik : OnClickListener
+class RecyclerviewAdapter(private var data: MutableList<String>, private var context: Context) : RecyclerView.Adapter<RecyclerviewAdapter.MyViewHolder>() {
 
-    var color       = Color.parseColor("#5EA1D6")
+    private lateinit var onclick: OnClickListener
+
+    var color = Color.parseColor("#5EA1D6")
     var colorSelect = Color.parseColor("#FAFF1E1E")
-    var fontText        = 0
-    var sizeText        = 0f
+    var fontText = 0
+    var sizeText = 0f
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        val itemView = LayoutInflater.from(parent.getContext())
+        val itemView = LayoutInflater.from(parent.context)
                 .inflate(R.layout.recyclerview_layout, parent, false)
 
         return MyViewHolder(itemView)
@@ -38,31 +40,31 @@ class RecyclerviewAdapter( var data: MutableList<String>,var context: Context): 
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val string = data.get(position)
+        val string = data[position]
 
-        if (position==data.size-1){
-            holder.linebottom.visibility = View.GONE
+        if (position == data.size - 1) {
+            holder.lineBottom.visibility = View.GONE
         }
 
-        holder.textView.setText(string)
+        holder.textView.text = string
         holder.itemView.setOnClickListener {
             holder.textView.setTextColor(colorSelect)
-            Handler().postDelayed({
-                onclik.onclik(string,position)
+            Handler(Looper.getMainLooper()).postDelayed({
+                onclick.onclick(string, position)
             }, 10)
         }
 
-        if (fontText!=0){
+        if (fontText != 0) {
             try {
                 val typefaceCancel = ResourcesCompat.getFont(context, fontText)
-                holder.textView.setTypeface(typefaceCancel)
-            }catch (e:Exception){
-                Log.e("Error",e.message)
+                holder.textView.typeface = typefaceCancel
+            } catch (e: Exception) {
+                e.message?.let { Log.e("Error", it) }
             }
         }
 
-        if (sizeText!=0f){
-            holder.textView.setTextSize(TypedValue.COMPLEX_UNIT_SP,sizeText)
+        if (sizeText != 0f) {
+            holder.textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, sizeText)
         }
 
         holder.textView.setTextColor(color)
@@ -70,12 +72,12 @@ class RecyclerviewAdapter( var data: MutableList<String>,var context: Context): 
 
     inner class MyViewHolder(v: View) : RecyclerView.ViewHolder(v) {
 
-        val textView = v.findViewById(R.id.tvName) as TextView
-        val linebottom = v.findViewById(R.id.linebottom) as LinearLayout
+        val textView = v.findViewById(R.id.tvName) as AppCompatTextView
+        val lineBottom = v.findViewById(R.id.line_bottom) as LinearLayoutCompat
     }
 
-    fun onclikCallback(onclikListener: OnClickListener){
-        this.onclik =  onclikListener
+    fun onclickCallback(onclickListener: OnClickListener) {
+        this.onclick = onclickListener
     }
 
 }

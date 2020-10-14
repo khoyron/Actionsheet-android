@@ -2,16 +2,15 @@ package com.khoiron.actionsheets.demo
 
 import android.graphics.Color
 import android.os.Bundle
-import com.khoiron.actionsheets.demo.R
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.khoiron.actionsheets.ActionSheet
 import com.khoiron.actionsheets.callback.ActionSheetCallBack
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val data by lazy { ArrayList<String>() }
+    private val data by lazy { ArrayList<String>() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +24,7 @@ class MainActivity : AppCompatActivity() {
             ActionSheet(this, data)
                     .setTitle("What do you want to do with the file")
                     .setCancelTitle("Deleted")
+                    .setColorBackground(Color.parseColor("#FFFFFF"))
                     .setColorTitleCancel(Color.parseColor("#FF4081"))
                     .setColorTitle(Color.parseColor("#FF4081"))
                     .setColorData(Color.parseColor("#FF4081"))
@@ -37,11 +37,12 @@ class MainActivity : AppCompatActivity() {
 //                   .setSizeTextTitle(30f)
                     .create(object : ActionSheetCallBack {
                         override fun data(data: String, position: Int) {
-                            if ("English".equals(data)) {
+                            if ("English" == data) {
                                 // your action
                                 setToast(data)
-                            } else if ("Indonesia".equals(data)) {
+                            } else if ("Indonesia" == data) {
                                 // your action
+                                setToast(data)
                             }
 
                         }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Action Sheet Ios for android</string>
+    <string name="cancel">Cancel</string>
 </resources>
