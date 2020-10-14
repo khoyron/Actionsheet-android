@@ -1,7 +1,7 @@
 # Actionsheet-android
 
 [![API](https://img.shields.io/badge/API-16%2B-red.svg?style=flat)](https://android-arsenal.com/api?level=16)
-[![](https://jitpack.io/v/dualbit/Actionsheet-android.svg)](https://jitpack.io/#dualbit/Actionsheet-android/4)
+[![](https://jitpack.io/v/mkhoiron/Actionsheet-android.svg)](https://jitpack.io/#mkhoiron/Actionsheet-android/4)
 
 Actionsheet-android is an Android Library to build Actionsheet like iOS UIActionSheet component, iOS7 style, custom color etc
 
@@ -23,7 +23,7 @@ allprojects {
  
 ```gradle
 dependencies {
-	implementation 'com.github.DualBit:Actionsheet-android:4'
+	implementation 'com.github.mkhoiron:Actionsheet-android:4'
 }
 ```
 
