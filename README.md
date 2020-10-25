@@ -23,7 +23,7 @@ allprojects {
  
 ```gradle
 dependencies {
-	implementation 'com.github.mkhoiron:Actionsheet-android:4'
+	implementation 'com.github.khoyron:Actionsheet-android:4'
 }
 ```
 
